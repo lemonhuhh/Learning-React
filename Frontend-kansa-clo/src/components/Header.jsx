@@ -8,20 +8,19 @@ function Header() {
           <div className="logo">
             <h2>Portfolio</h2>
           </div>
-
           <nav>
             <ul className="nav-links">
               <li>
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/">About</a>
+                <a href="/About">About</a>
               </li>
               <li>
-                <a href="/">Collection</a>
+                <a href="/Collection">Collection</a>
               </li>
               <li>
-                <a href="/">Contact</a>
+                <a href="/Contact">Contact</a>
               </li>
             </ul>
           </nav>
