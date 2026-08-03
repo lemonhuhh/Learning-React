@@ -1,0 +1,86 @@
+@import "tailwindcss";
+:root {
+  --bg: #f7fafd;
+  --surface: #bdddfc;
+  --primary: #88bdf2;
+  --secondary: #6a89a7;
+  --dark: #384959;
+  --border: #d6e8f8;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: auto;
+
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h2 {
+  color: var(--dark);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--secondary);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.hire-btn {
+  padding: 12px 22px;
+
+  background: var(--primary);
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.hire-btn:hover {
+  background: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hire-btn {
+    padding: 10px 18px;
+  }
+}
