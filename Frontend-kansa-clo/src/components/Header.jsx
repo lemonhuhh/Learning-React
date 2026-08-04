@@ -6,7 +6,7 @@ function Header() {
       <header className="header">
         <div className="container">
           <div className="logo">
-            <h2>Portfolio</h2>
+            <h2>Yeti wear</h2>
           </div>
           <nav>
             <ul className="nav-links">
@@ -25,7 +25,7 @@ function Header() {
             </ul>
           </nav>
 
-          <button className="hire-btn">Hire Me</button>
+          <button className="hire-btn">Shop Now</button>
         </div>
       </header>
     </>

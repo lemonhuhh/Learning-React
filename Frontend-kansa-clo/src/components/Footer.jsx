@@ -7,7 +7,7 @@ function Footer() {
         <div className="footer-container">
           <div className="footer-top">
             <div className="footer-brand">
-              <h2>Portfolio</h2>
+              <h2>Yeti Wear</h2>
               <p>Building clean, modern and responsive web experiences.</p>
             </div>
             <div className="footer-links">
@@ -25,7 +25,7 @@ function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            © 2026 Portfolio. All Rights Reserved.
+            © 2026 Yeti Wear. All Rights Reserved.
           </div>
         </div>
       </footer>
