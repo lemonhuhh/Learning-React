@@ -10,15 +10,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layouts />}>
-          <Route index element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Collection" element={<Collection />} />
+        <Route path="/" element={<Layouts/>}>
+          <Route index element={<Home/>}/>
+          <Route path="/About" element={<About/>}/>
+          <Route path="/Contact" element={<Contact/>}/>
+          <Route path="/Collection" element={<Collection/>}/>
         </Route>
       </Routes>
     </>
   );
 }
 
-export default App;
+export default App
