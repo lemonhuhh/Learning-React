@@ -1,4 +1,4 @@
-import jacket from "../products/jacket.jpg"
+import jacket from "../products/jacket.png"
 
 const product = [
     { id: 1,

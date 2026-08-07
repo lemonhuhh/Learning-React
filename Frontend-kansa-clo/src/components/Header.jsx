@@ -1,6 +1,10 @@
 import React from "react";
 
 function Header() {
+  const navbar=()=>{
+    
+  }
+
   return (
     <>
       <header className="header">
@@ -8,22 +12,8 @@ function Header() {
           <div className="logo">
             <h2>Yeti wear</h2>
           </div>
-          <nav>
-            <ul className="nav-links">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/About">About</a>
-              </li>
-              <li>
-                <a href="/Collection">Collection</a>
-              </li>
-              <li>
-                <a href="/Contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
+          
+            {/* className="nav-links" */}
 
           <button className="hire-btn">Shop Now</button>
         </div>

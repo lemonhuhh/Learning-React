@@ -85,8 +85,9 @@ import Productcard from "../components/reusable/Productcard";
 function Home() {
   return (
     <>
-      <div>
-        <h1>Our products</h1>
+    <div>
+      
+        <h1 className="text-(--product-title)">Our products</h1>
       </div>
       <div>
         <Productcard />
