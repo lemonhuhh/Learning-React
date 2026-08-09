@@ -11,14 +11,14 @@ function Productcard() {
       {product.map((products) => (
         <div
           key={products.id}
-          className="w-[310px] overflow-hidden rounded-2xl bg-white shadow-lg"
+          className="w-77.5 overflow-hidden rounded-2xl bg-white shadow-lg transition hover:tran hover:shadow-xl"
         >
           {/* Image Section */}
-          <div className="relative h-[230px] bg-[#625a89] flex items-center justify-center">
+          <div className="relative h-57.5 bg-[#625a89] flex items-center justify-center">
             <img
               src={products.image}
               alt={products.name}
-              className="w-[245px] object-contain rotate-[-8deg]"
+              className="w-61.25 object-contain rotate-[-8deg]"
             />
 
             {/* Heart */}
@@ -64,7 +64,7 @@ function Productcard() {
 
               <button
                 onClick={handelAddtocart}
-                className="h-10 w-[160px] rounded-md bg-[#62578c] text-sm font-semibold text-white hover:bg-[#514778] transition"
+                className="h-10 w-40 rounded-md bg-[#62578c] text-sm font-semibold text-white hover:bg-[#514778] transition"
               >
                 Add to cart
               </button>
