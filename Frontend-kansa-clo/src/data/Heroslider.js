@@ -15,6 +15,11 @@ const Herobanner = [
         id:3,
         Title: "New Collection",
         Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    },
+    {
+        id:4,
+        Title:"Collection",
+        Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     }
 ]
 export default Herobanner;
