@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Productcard from "../components/reusable/Productcard";
 import Herobanner from "../data/Heroslider";
 import { useState } from "react";
+import hero from "../assets/hero.jpg"
 
 // function Home() {
 //   const clothes = [
@@ -80,17 +81,56 @@ function Home() {
   ];
   localStorage.setItem("name", "Prabin");
   localStorage.setItem("age", 25);
-  localStorage.setItem("Names",JSON.stringify(name))
+  localStorage.setItem("Names", JSON.stringify(name));
 
   return (
     <>
+      <section className="hero">
+        <div className="hero-container">
+          <div className="hero-content">
+            <span className="hero-badge">New Arrivals — Festive 2026</span>
+
+            <h1>
+              Redefining
+              <span> Timeless </span>
+              Luxury.
+            </h1>
+
+            <p>
+              Crafted with history, refined with elegance, made for those who appreciate true artistry.
+            </p>
+
+            <div className="hero-actions">
+              <a href="#" className="hero-btn primary">
+                SHOP COLLECTION
+                <span>→</span>
+              </a>
+
+              <a href="#" className="hero-btn secondary ">
+                EXPLORE NEW ARRIVALS
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+
+            <div className="hero-card">
+              <div className="hero-card-image">
+                <img
+                  src={hero}
+                  alt="Hero"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div>
         <h1 className="text-(--product-title)">Our products</h1>
       </div>
       {/* <div>
         <Productcard />
       </div> */}
-
       <section>
         <div>
           {Herobanner.map((slide, index) => (
