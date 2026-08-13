@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Productcard from "../components/reusable/Productcard";
 import Herobanner from "../data/Heroslider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import hero from "../assets/hero.jpg"
 
 // function Home() {
