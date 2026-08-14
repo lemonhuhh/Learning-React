@@ -59,7 +59,7 @@ useEffect(() => {
           +
         </button>
         <button onClick={handledecrement} className="primary-btn">
-          -
+          
         </button>
       </div>
     </>

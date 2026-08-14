@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 import Productcard from "../components/reusable/Productcard";
 import Herobanner from "../data/Heroslider";
 import { useState, useEffect } from "react";
-import hero from "../assets/hero.jpg"
+import hero from "../assets/hero.jpg";
+import Heroslider from "../data/Heroslider";
 
 // function Home() {
 //   const clothes = [
@@ -51,17 +52,17 @@ import hero from "../assets/hero.jpg"
 // export default Home;
 
 function Home() {
-  const [currentslide, setCurrentSlide] = useState(0);
+  // const [currentslide, setCurrentSlide] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentSlide((currentslide + 1) % Herobanner.length);
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide((currentslide + 1) % Herobanner.length);
+  // };
 
-  const previousSlide = () => {
-    setCurrentSlide((currentslide - 1 + Herobanner.length) % Herobanner.length);
-  };
+  // const previousSlide = () => {
+  //   setCurrentSlide((currentslide - 1 + Herobanner.length) % Herobanner.length);
+  // };
 
-  const [liked, setLiked] = useState(false);
+  // const [liked, setLiked] = useState(false);
 
   // const handlelike =() =>{
   //   setLiked ((!liked ? true : false))
@@ -83,22 +84,34 @@ function Home() {
   localStorage.setItem("age", 25);
   localStorage.setItem("Names", JSON.stringify(name));
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % Herobanner.length);
+  };
+
+  const previousSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + Herobanner.length) % Herobanner.length,
+    );
+  };
+
+  const current = Herobanner[currentSlide];
+
   return (
     <>
       <section className="hero">
         <div className="hero-container">
           <div className="hero-content">
-            <span className="hero-badge">New Arrivals — Festive 2026</span>
+            <span className="hero-badge">{current.tag}</span>
 
             <h1>
-              Redefining
-              <span> Timeless </span>
-              Luxury.
+              {current.title1}
+              <span> {current.title2} </span>
+              {current.title3}
             </h1>
 
-            <p>
-              Crafted with history, refined with elegance, made for those who appreciate true artistry.
-            </p>
+            <p>{current.description}</p>
 
             <div className="hero-actions">
               <a href="#" className="hero-btn primary">
@@ -106,32 +119,32 @@ function Home() {
                 <span>→</span>
               </a>
 
-              <a href="#" className="hero-btn secondary ">
+              <a href="#" className="hero-btn secondary">
                 EXPLORE NEW ARRIVALS
               </a>
             </div>
           </div>
 
           <div className="hero-visual">
-
             <div className="hero-card">
               <div className="hero-card-image">
-                <img
-                  src={hero}
-                  alt="Hero"
-                />
+                <img src={current.image} alt="Hero" />
               </div>
             </div>
+            <div className="hero-slider-controls">
+                <button className="primary-btn" onClick={previousSlide}>←</button>
+                <button className="primary-btn" onClick={nextSlide}>→</button>
+              </div>
           </div>
         </div>
       </section>
-      <div>
+      {/* <div>
         <h1 className="text-(--product-title)">Our products</h1>
-      </div>
+      </div> */}
       {/* <div>
         <Productcard />
       </div> */}
-      <section>
+      {/* <section>
         <div>
           {Herobanner.map((slide, index) => (
             <div
@@ -150,11 +163,11 @@ function Home() {
           </button>
           <button onClick={nextSlide} className="primary-btn">
             Next
-          </button>
+          </button> */}
 
-          {/* <button onClick={handlelike}>Add to wishlist</button> */}
+      {/* <button onClick={handlelike}>Add to wishlist</button>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
