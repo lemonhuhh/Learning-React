@@ -32,6 +32,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  cursor: pointer;
+  color: #bdddfc;
 }
 
 .footer-links h3,
@@ -45,8 +47,8 @@
   transition: 0.3s;
 }
 
-.footer a:hover {
-  color: #88bdf2;
+.links:hover {
+  color: #888ff2;
 }
 
 .footer-bottom {

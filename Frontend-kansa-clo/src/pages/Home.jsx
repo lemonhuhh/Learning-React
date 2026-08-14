@@ -99,7 +99,7 @@ function Home() {
   const current = Herobanner[currentSlide];
 
   return (
-    <>
+    <div className="home">
       <section className="hero">
         <div className="hero-container">
           <div className="hero-content">
@@ -138,12 +138,12 @@ function Home() {
           </div>
         </div>
       </section>
-      {/* <div>
+      <div>
         <h1 className="text-(--product-title)">Our products</h1>
-      </div> */}
-      {/* <div>
+      </div> 
+       <div>
         <Productcard />
-      </div> */}
+      </div>
       {/* <section>
         <div>
           {Herobanner.map((slide, index) => (
@@ -168,7 +168,7 @@ function Home() {
       {/* <button onClick={handlelike}>Add to wishlist</button>
         </div>
       </section> */}
-    </>
+    </div>
   );
 }
 

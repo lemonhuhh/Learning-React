@@ -1,4 +1,7 @@
 @import "tailwindcss";
+.home{
+  background: var(--bg);
+}
 :root {
   /* Card */
   --product-card-bg: #ffffff;
