@@ -96,6 +96,14 @@ function Home() {
     );
   };
 
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentSlide((prev) => (prev + 1) % Herobanner.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, []);
+
   const current = Herobanner[currentSlide];
 
   return (
