@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   const navbar = [
@@ -21,12 +21,14 @@ function Header() {
     },
   ];
 
+  const heronav = () => {};
+
   return (
     <>
       <header className="header">
         <div className="container">
           <div className="logo">
-            <h2>Yeti wear</h2>
+            <Link to="/" className="logo-badge">Yeti Wear</Link>
           </div>
           <div className="nav-links">
             {navbar.map((nav) => (

@@ -1,37 +1,38 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import product from "../data/data.js";
-import axios from "axios"
+import axios from "axios";
 
 function Collection() {
   const [loading, setLoading] = useState(true);
-  const [data, setData] =useState();
+  const [data, setData] = useState();
   const [error, setError] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     const productdatas = async () => {
-    setLoading(true);
-    try{
-      const response = await axios.get("");
-      setData(response.data.data);
-      setLoading(false);
-      console.log(response.data.data);
-    }
-    catch (error){
-      setError("Error fetching the data" + error.message);
-      setLoading(false);
-    }
-  }
-  productdatas();
-  },[]);
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          "https://pahiran-backend.onrender.com/api/products",
+        );
+        setData(response.data.data);
+        setLoading(false);
+        console.log(response.data.data);
+      } catch (error) {
+        setError("Error fetching the data" + error.message);
+        setLoading(false);
+      }
+    };
+    productdatas();
+  }, []);
 
   if (loading) {
-    return <h1>Loading datas......</h1>
+    return <h1>Loading datas......</h1>;
   }
-  else (error)
-  
-    return <h1>Error:{error}</h1>
-  
+  if (error) {
+    return <h1>Error!{error}</h1>;
+  }
+
   // const [products, setProducts] = useState();
   // async function getData() {
   //   try {
@@ -64,12 +65,13 @@ function Collection() {
 
   return (
     <>
-      {data && data.map((product) =>(
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-        </div>
-      ))}
+      {data &&
+        data.map((product) => (
+          <div key={product.id}>
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+          </div>
+        ))}
       {/* <div>{products.map(() => {})}</div>
       <div>
         <p>Product no.{count}</p>
