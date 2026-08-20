@@ -1,4 +1,4 @@
-import Layouts from "./layout/Layouts";
+import { Layouts } from "./layout/Layouts";
 import DashboardLayout from "./layout/Layouts";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -20,18 +20,16 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/collection" element={<Collection />} />
-          <Route path="/Ooder" element={<Oder />} />
+          <Route path="/oder" element={<Oder />} />
         </Route>
 
         {/* Fot Dashboard */}
 
         <Route element={<DashboardLayout />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Admindashboard/>}/>
-          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/dashboard" element={<Admindashboard />} />
+          <Route path="/signup" element={<Signup />} />
         </Route>
-
-
       </Routes>
     </>
   );
