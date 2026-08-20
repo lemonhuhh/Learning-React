@@ -14,13 +14,21 @@ const [formData, setFormData] = useState({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    localStorage.setItem("formData", JSON.stringify(formData));
+    
+    
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    localStorage.setItem("formData", JSON.stringify(formData));
     console.log(formData);
+    setFormData({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   };
 //   const [formdata, setFormdata] = useState({
 //     name:"",
