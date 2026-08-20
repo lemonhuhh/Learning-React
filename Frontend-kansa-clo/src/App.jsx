@@ -5,7 +5,9 @@ import About from "./pages/About";
 import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
 import Oder from "./pages/Oder";
-import Login from "./pages/Login";
+import Login from "./pages/auth/Login";
+import Admindashboard from "./pages/adminpages/Admindashboard";
+import Signup from "./pages/auth/Signup";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -25,6 +27,8 @@ function App() {
 
         <Route element={<DashboardLayout />}>
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Admindashboard/>}/>
+          <Route path="/signup" element={<Signup/>}/>
         </Route>
 
 
