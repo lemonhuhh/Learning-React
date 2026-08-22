@@ -1,11 +1,22 @@
-import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Admindashboard() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  };
+
   return (
     <div>
-      This is admindashboard
+      <h1>Admin Dashboard</h1>
+
+      <button onClick={handleLogout} className="primary-btn">
+        Logout
+      </button>
     </div>
-  )
+  );
 }
 
-export default Admindashboard
+export default Admindashboard;

@@ -166,7 +166,7 @@ function Login() {
       formData.password === adminDetails.password
     ) {
       alert("Login Successful.");
-
+      localStorage.setItem("isLoggedIn", "true")
       setFormdata({
         email: "",
         password: "",
@@ -266,7 +266,7 @@ function Login() {
                 <span>
                   Don't have an account?{" "}
                   <a href="/signup" className="text-[#4e91d4] hover:underline">
-                    Sign up
+                    Create an account
                   </a>
                 </span>
               </div>

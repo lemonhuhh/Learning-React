@@ -13,7 +13,7 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
-
+  
   const handleChange = (e) => {
     setFormdata({
       ...formData,
@@ -23,12 +23,10 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // You can add confirm password logic here later
-
-    alert("Signup Successful.");
-
-    setFormdata({
+    if( formData.password === formData.confirmPassword){
+      alert("Account successfully created")
+      navigate("/login")
+      setFormdata({
       fullName: "",
       email: "",
       phone: "",
@@ -36,14 +34,17 @@ function Signup() {
       password: "",
       confirmPassword: "",
     });
+    }
+    else{
+      alert("Password and confirm passowrd must be same!")
+    }
 
-    navigate("/login");
-  };
+    }; 
 
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_12%_10%,rgba(136,189,242,0.36),transparent_26rem),radial-gradient(circle_at_88%_92%,rgba(189,221,252,0.65),transparent_25rem)] p-4">
-        <div className="flex w-full max-w-[900px] flex-col md:flex-row overflow-hidden rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
+        <div className="flex w-full max-w-300 flex-col md:flex-row overflow-hidden rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
           {/* Welcome */}
           <div className="relative w-full md:w-1/2 min-h-5 md:min-h-125 flex items-center text-center justify-center overflow-hidden">
             {/* Background image - desktop only */}
@@ -52,7 +53,7 @@ function Signup() {
               className="hidden md:block absolute inset-0 w-full h-full object-cover"
             />
 
-            <p className="relative text-[1.8rem] md:text-[2.3rem] font-extrabold tracking-wider text-[#184a7c]">
+            <p className="relative text-[1.8rem] md:text-[4.3rem] font-extrabold tracking-wider text-[#184a7c]">
               JOIN US
             </p>
           </div>
@@ -64,6 +65,7 @@ function Signup() {
             </p>
 
             <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-3 gap-4">
               {/* Full Name */}
               <div>
                 <label
@@ -185,23 +187,24 @@ function Signup() {
               </div>
 
               {/* Sign Up Button */}
-              <div className="text-center mt-4">
+              <div className="text-center mt-4 col-span-3  ">
                 <button
                   type="submit"
-                  className="min-w-full text-[1rem] p-2 rounded-4xl tracking-[0.05em] text-amber-50 bg-[#184a7c]"
+                  className=" min-w-full text-[1rem] p-2 rounded-4xl tracking-[0.05em] text-amber-50 bg-[#184a7c]"
                 >
                   Sign Up
                 </button>
               </div>
 
               {/* Login */}
-              <div className="text-center pt-5">
+              <div className="text-center pt-5 col-span-3">
                 <span>
                   Already have an account?{" "}
                   <a href="/login" className="text-[#4e91d4] hover:underline">
                     Login
                   </a>
                 </span>
+              </div>
               </div>
             </form>
           </div>
