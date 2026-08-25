@@ -166,13 +166,13 @@ function Login() {
       formData.password === adminDetails.password
     ) {
       alert("Login Successful.");
-      localStorage.setItem("isLoggedIn", "true")
+      localStorage.setItem("isLoggedIn", "true");
       setFormdata({
         email: "",
         password: "",
       });
 
-      navigate("/dashboard");
+      navigate("/admin");
     } else {
       alert("Incorrect password or email!!");
     }

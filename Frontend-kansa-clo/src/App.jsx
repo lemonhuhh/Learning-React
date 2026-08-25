@@ -1,5 +1,5 @@
 import { Layouts } from "./layout/Layouts";
-import DashboardLayout from "./layout/Layouts";
+import AdminLayout from "./layout/AdminLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Collection from "./pages/Collection";
@@ -9,6 +9,8 @@ import Login from "./pages/auth/Login";
 import Admindashboard from "./pages/adminpages/Admindashboard";
 import Signup from "./pages/auth/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminUser from "./pages/adminpages/AdminUser";
+import AdminProduct from "./pages/adminpages/AdminProduct";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -26,14 +28,34 @@ function App() {
 
         {/* Fot Dashboard */}
 
-        <Route element={<DashboardLayout />}>
-          <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-          <Route path="/signup" element={<Signup />} />
-        </Route>
-
-        <Route element={<ProtectedRoute/>}>
-        <Route path="/dashboard" element={<Admindashboard />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Admindashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="user"
+            element={
+              <ProtectedRoute>
+                <AdminUser />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="products"
+            element={
+              <ProtectedRoute>
+                <AdminProduct />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </>

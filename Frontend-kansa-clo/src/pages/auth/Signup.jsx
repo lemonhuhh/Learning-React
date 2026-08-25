@@ -190,7 +190,7 @@ function Signup() {
               <div className="text-center mt-4 col-span-3  ">
                 <button
                   type="submit"
-                  className=" min-w-full text-[1rem] p-2 rounded-4xl tracking-[0.05em] text-amber-50 bg-[#184a7c]"
+                  className=" min-w-full text-[1rem] p-2 rounded-4xl tracking-wider text-amber-50 bg-[#184a7c]"
                 >
                   Sign Up
                 </button>

@@ -5,19 +5,9 @@ import { Outlet } from "react-router-dom";
 export function Layouts() {
   return (
     <>
-      <Header/>
-      <Outlet/>
-      <Footer/>
-    </>
-  );
-}
-
-function DashboardLayout() {
-  return (
-    <>
+      <Header />
       <Outlet />
+      <Footer />
     </>
   );
 }
-
-export default DashboardLayout
