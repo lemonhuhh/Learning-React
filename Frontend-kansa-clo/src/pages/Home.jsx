@@ -6,6 +6,8 @@ import Herobanner from "../data/Heroslider";
 import { useState, useEffect } from "react";
 import hero from "../assets/hero.jpg";
 import Heroslider from "../data/Heroslider";
+import { CartContext } from "../context/CartContext";
+import { useContext } from "react";
 
 // function Home() {
 //   const clothes = [
@@ -67,7 +69,7 @@ function Home() {
   // const handlelike =() =>{
   //   setLiked ((!liked ? true : false))
   // }
-
+  const { cart } = useContext(CartContext);
   const name = [
     {
       name: "Surajan",
@@ -97,17 +99,20 @@ function Home() {
   };
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentSlide((prev) => (prev + 1) % Herobanner.length);
-  }, 3000);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % Herobanner.length);
+    }, 3000);
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
   const current = Herobanner[currentSlide];
 
   return (
     <div className="home">
+      <div>
+        <p>Cart :{cart.length}</p>
+      </div>
       <section className="hero">
         <div className="hero-container">
           <div className="hero-content">
@@ -140,16 +145,20 @@ function Home() {
               </div>
             </div>
             <div className="hero-slider-controls">
-                <button className="primary-btn" onClick={previousSlide}>←</button>
-                <button className="primary-btn" onClick={nextSlide}>→</button>
-              </div>
+              <button className="primary-btn" onClick={previousSlide}>
+                ←
+              </button>
+              <button className="primary-btn" onClick={nextSlide}>
+                →
+              </button>
+            </div>
           </div>
         </div>
       </section>
       <div>
         <h1 className="text-(--product-title)">Our products</h1>
-      </div> 
-       <div>
+      </div>
+      <div>
         <Productcard />
       </div>
       {/* <section>

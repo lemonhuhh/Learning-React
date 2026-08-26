@@ -1,13 +1,17 @@
 import React from "react";
 import product from "../../data/data";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 function Productcard() {
-  const handelAddtocart = () => {
+  const { addToCart } = useContext(CartContext);
+  const handelAddtocart = (products) => {
     console.log("Add to cart button is clicked");
+    addToCart(products);
   };
 
   return (
-    <div className="min-h-screen items-center justify-center gap-5 grid grid-cols-4" >
+    <div className="min-h-screen items-center justify-center gap-5 grid grid-cols-4">
       {product.map((products) => (
         <div
           key={products.id}
@@ -29,9 +33,7 @@ function Productcard() {
 
           {/* Product Details */}
           <div className="px-4 py-3">
-            <h2 className="text-xl font-bold text-gray-800">
-              {products.name}
-            </h2>
+            <h2 className="text-xl font-bold text-gray-800">{products.name}</h2>
 
             {/* Tags */}
             <div className="flex gap-2 mt-2">

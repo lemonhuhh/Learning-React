@@ -5,10 +5,14 @@ function Admindashboard() {
 
 
   return (
+    <>
+    <main className=" bg-[#0F172A] text-[#F8FAFC] ">
     <div>
       Welcome to dashboard
       
     </div>
+    </main>
+    </>
   );
 }
 

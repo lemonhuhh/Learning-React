@@ -6,9 +6,12 @@ import "./test.css";
 import "./css/Footer.css";
 import "./css/Header.css";
 import "../src/css/Hero.css";
+import CartProvider from "./context/CartContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App />
+    <CartProvider>
+      <App />
+    </CartProvider>
   </BrowserRouter>,
 );

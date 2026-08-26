@@ -12,20 +12,22 @@ function Sidebar() {
     {
         name:"Products",
         to: "/admin/products"
-    }
+    },
+
   ];
 
   return (
     <>
-      <div className="bg-(--bg)">
+      <div className="bg-[#0F172A]">
         <div>
           {sidebar.map((l) => (
             <li
               key={l.name}
               onClick={() => navigate(l.to)}
-              className="cursor-pointer p-2"
+              className="cursor-pointer p-6 text-[#CBD5E1] font-serif hover:bg-[#164E63] hover:text-[#67E8F9]"
             >
               {l.name}
+              
             </li>
           ))}
         </div>

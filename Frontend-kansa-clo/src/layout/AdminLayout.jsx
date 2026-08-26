@@ -7,7 +7,7 @@ function AdminLayout() {
   return (
     <>
     <AdminHeader/>
-      <div className="flex ">
+      <div className="flex min-h-screen bg-slate-50">
         <Sidebar />
         <main className="flex-1 p-5">
           <Outlet />
