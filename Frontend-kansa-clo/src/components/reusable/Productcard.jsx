@@ -9,7 +9,7 @@ function Productcard() {
   const { addToCart } = useContext(CartContext);
 
   const handelAddtocart = (products) => {
-    console.log("Add to cart button is clicked");
+    alert(`${products.name} added to cart.`)
     addToCart(products);
   };
 

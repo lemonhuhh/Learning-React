@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import product from "../data/data.js";
 import axios from "axios";
+import API_URL from "../api/api.js";
 
 function Collection() {
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ function Collection() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://pahiran-backend.onrender.com/api/products",
+          `${API_URL}/products`,
         );
         setData(response.data.data);
         setLoading(false);

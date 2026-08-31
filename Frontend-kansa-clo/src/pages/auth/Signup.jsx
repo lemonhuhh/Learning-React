@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import signupbg from "../../assets/logo/signupbg.png";
+import axios from "axios";
+import API_URL from "../../api/api";
 
 function Signup() {
   const navigate = useNavigate();
 
   const [formData, setFormdata] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     address: "",
+    terms: false,
     password: "",
     confirmPassword: "",
   });
-  
+
   const handleChange = (e) => {
     setFormdata({
       ...formData,
@@ -21,25 +24,38 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if( formData.password === formData.confirmPassword){
-      alert("Account successfully created")
-      navigate("/login")
-      setFormdata({
-      fullName: "",
-      email: "",
-      phone: "",
-      address: "",
-      password: "",
-      confirmPassword: "",
-    });
-    }
-    else{
-      alert("Password and confirm passowrd must be same!")
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
     }
 
-    }; 
+    if (!formData.terms) {
+      alert("Please accept the terms!");
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${API_URL}/auth/register`, {
+        method: "POST",
+        header: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert("Registration successful");
+        navigate("/login");
+      } else {
+        alert("Registration failed!");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("Unable to connect to server!");
+    }
+  };
 
   return (
     <>
@@ -66,145 +82,155 @@ function Signup() {
 
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-3 gap-4">
-              {/* Full Name */}
-              <div>
-                <label
-                  htmlFor="fullName"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Full name:
-                </label>
+                {/* Full Name */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Full name:
+                  </label>
 
-                <input
-                  required
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Your full name"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                </div>
 
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Email:
-                </label>
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Email:
+                  </label>
 
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="example@gmail.com"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="example@gmail.com"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                </div>
 
-              {/* Phone */}
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Phone number:
-                </label>
+                {/* Phone */}
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Phone number:
+                  </label>
 
-                <input
-                  required
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Your phone number"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your phone number"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                </div>
 
-              {/* Address */}
-              <div>
-                <label
-                  htmlFor="address"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Address:
-                </label>
+                {/* Address */}
+                <div>
+                  <label
+                    htmlFor="address"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Address:
+                  </label>
 
-                <input
-                  required
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  placeholder="Your address"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    placeholder="Your address"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                </div>
 
-              {/* Password */}
-              <div>
-                <label
-                  htmlFor="password"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Password:
-                </label>
+                {/* Password */}
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Password:
+                  </label>
 
-                <input
-                  required
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Create a password"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Create a password"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                </div>
 
-              {/* Confirm Password */}
-              <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="text-[0.9rem] font-bold text-[#384959]"
-                >
-                  Confirm password:
-                </label>
+                {/* Confirm Password */}
+                <div>
+                  <label
+                    htmlFor="confirmPassword"
+                    className="text-[0.9rem] font-bold text-[#384959]"
+                  >
+                    Confirm password:
+                  </label>
 
-                <input
-                  required
-                  type="password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  placeholder="Confirm your password"
-                  className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
-                />
-              </div>
+                  <input
+                    required
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Confirm your password"
+                    className="m-1 min-h-12.5 w-full rounded-[10px] border border-[#c9dceb] bg-white px-3.5 text-[#384959] outline-none transition focus:border-[#88bdf2] focus:shadow-[0_0_0_4px_rgba(136,189,242,0.2)]"
+                  />
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="terms"
+                      value={formData.terms}
+                      onChange={handleChange}
+                      className=""
+                    />
+                    {""}I agree to the terms and conditions.
+                  </label>
+                </div>
 
-              {/* Sign Up Button */}
-              <div className="text-center mt-4 col-span-3  ">
-                <button
-                  type="submit"
-                  className=" min-w-full text-[1rem] p-2 rounded-4xl tracking-wider text-amber-50 bg-[#184a7c]"
-                >
-                  Sign Up
-                </button>
-              </div>
+                {/* Sign Up Button */}
+                <div className="text-center mt-4 col-span-3  ">
+                  <button
+                    type="submit"
+                    className=" min-w-full text-[1rem] p-2 rounded-4xl tracking-wider text-amber-50 bg-[#184a7c]"
+                  >
+                    Sign Up
+                  </button>
+                </div>
 
-              {/* Login */}
-              <div className="text-center pt-5 col-span-3">
-                <span>
-                  Already have an account?{" "}
-                  <a href="/login" className="text-[#4e91d4] hover:underline">
-                    Login
-                  </a>
-                </span>
-              </div>
+                {/* Login */}
+                <div className="text-center pt-5 col-span-3">
+                  <span>
+                    Already have an account?{" "}
+                    <a href="/login" className="text-[#4e91d4] hover:underline">
+                      Login
+                    </a>
+                  </span>
+                </div>
               </div>
             </form>
           </div>

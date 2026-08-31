@@ -69,7 +69,6 @@ function Home() {
   // const handlelike =() =>{
   //   setLiked ((!liked ? true : false))
   // }
-  const { cart } = useContext(CartContext);
   const name = [
     {
       name: "Surajan",
@@ -110,9 +109,6 @@ function Home() {
 
   return (
     <div className="home">
-      <div>
-        <p>Cart :{cart.length}</p>
-      </div>
       <section className="hero">
         <div className="hero-container">
           <div className="hero-content">

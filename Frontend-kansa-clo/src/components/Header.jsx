@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
+import product from "../data/data";
 
 function Header() {
   const navigate = useNavigate();
@@ -33,6 +34,10 @@ function Header() {
     navigate(`/login`);
   };
 
+  const handleCart = () => {
+    navigate(`/mycart`);
+  };
+
   return (
     <>
       <header className="header">
@@ -55,8 +60,11 @@ function Header() {
           </div>
           <div className="header-icons">
             <FaRegHeart className="header-icon" />
-            <AiOutlineShoppingCart className="header-icon" />
-            <FiUser className="header-icon" onClick={handleProfile}/>
+            <AiOutlineShoppingCart
+              className="header-icon"
+              onClick={handleCart}
+            />
+            <FiUser className="header-icon" onClick={handleProfile} />
           </div>
         </div>
       </header>
