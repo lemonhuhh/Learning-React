@@ -11,6 +11,7 @@ import Signup from "./pages/auth/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminUser from "./pages/adminpages/AdminUser";
 import AdminProduct from "./pages/adminpages/AdminProduct";
+import ProductDetails from "./product/ProductDetails";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/oder" element={<Oder />} />
+          <Route path="/product/:name" element={<ProductDetails/>}/>
         </Route>
 
         {/* Fot Dashboard */}

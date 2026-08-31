@@ -8,6 +8,24 @@
   --border: #d6e8f8;
 }
 
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  color: #334155;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header-icon:hover {
+  color: #06b6d4;
+}
+
 .header {
   position: sticky;
   top: 0;

@@ -1,5 +1,8 @@
-import React from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FiUser } from "react-icons/fi";
+
 function Header() {
   const navigate = useNavigate();
   const navbar = [
@@ -22,13 +25,22 @@ function Header() {
   ];
 
   const heronav = () => {};
+  const handleWishlist = () => {
+    navigate(``);
+  };
+
+  const handleProfile = () => {
+    navigate(`/login`);
+  };
 
   return (
     <>
       <header className="header">
         <div className="container">
           <div className="logo">
-            <Link to="/" className="logo-badge">Yeti Wear</Link>
+            <Link to="/" className="logo-badge">
+              Yeti Wear
+            </Link>
           </div>
           <div className="nav-links">
             {navbar.map((nav) => (
@@ -41,7 +53,11 @@ function Header() {
               </li>
             ))}
           </div>
-          <button className="hire-btn">Shop Now</button>
+          <div className="header-icons">
+            <FaRegHeart className="header-icon" />
+            <AiOutlineShoppingCart className="header-icon" />
+            <FiUser className="header-icon" onClick={handleProfile}/>
+          </div>
         </div>
       </header>
     </>
