@@ -7,11 +7,15 @@ import "./css/Footer.css";
 import "./css/Header.css";
 import "../src/css/Hero.css";
 import CartProvider from "./context/CartContext.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.js";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </BrowserRouter>,
+  <Provider Provider store={store}>
+    <BrowserRouter>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </BrowserRouter>
+  </Provider>,
 );
